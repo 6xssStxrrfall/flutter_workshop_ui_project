@@ -1,71 +1,126 @@
 import 'package:flutter/material.dart';
-import 'login_ui.dart';
+import 'e01_page_ui.dart';
 
-class PasswordChangUI extends StatelessWidget {
-  PasswordChangUI({super.key});
+class E06PageUI extends StatefulWidget {
+  E06PageUI({super.key});
+
+  @override
+  State<E06PageUI> createState() => _E06PageUIState();
+}
+
+class _E06PageUIState extends State<E06PageUI> {
+  bool hide1 = true;
+  bool hide2 = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            SizedBox(height: 120.0),
-
-            Image.asset(
-              'assets/images/img_correct.png',
-              height: 75.0,
-            ),
-
-            SizedBox(height: 25.0),
-
-            Text(
-              'Password Changed!',
-              style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-
-            SizedBox(height: 10.0),
-
-            Text(
-              'Your password has been changed\nsuccessfully.',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 12.0,
-                color: const Color.fromARGB(255, 255, 255, 255),
-              ),
-            ),
-
-            SizedBox(height: 25.0),
-
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => LoginUI(),
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 28),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 28),
+                IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(Icons.arrow_back_ios_new, size: 17),
+                ),
+                SizedBox(height: 12),
+                Text(
+                  'Create New Password',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 4),
+                Text(
+                  'Create a new password for your account.',
+                  style: TextStyle(fontSize: 9, color: Color(0xFF777777)),
+                ),
+                SizedBox(height: 20),
+                TextField(
+                  obscureText: hide1,
+                  decoration: _decoration('New Password').copyWith(
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          hide1 = !hide1;
+                        });
+                      },
+                      icon: Icon(
+                        hide1
+                            ? Icons.visibility_off_outlined
+                            : Icons.visibility_outlined,
+                        size: 17,
+                      ),
+                    ),
                   ),
-                );
-              },
-              child: Text(
-                'Back to Login',
-                style: TextStyle(
-                  color: Colors.white,
                 ),
-              ),
-              style: ElevatedButton.styleFrom(
-                fixedSize: Size(350.0, 50.0),
-                backgroundColor: Colors.black,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5.0),
+                SizedBox(height: 10),
+                TextField(
+                  obscureText: hide2,
+                  decoration: _decoration('Confirm Password').copyWith(
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          hide2 = !hide2;
+                        });
+                      },
+                      icon: Icon(
+                        hide2
+                            ? Icons.visibility_off_outlined
+                            : Icons.visibility_outlined,
+                        size: 17,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+                SizedBox(height: 15),
+                SizedBox(
+                  width: double.infinity,
+                  height: 40,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => E01PageUI(),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFFFF9D00),
+                      foregroundColor: Colors.white,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                    ),
+                    child: Text('Submit', style: TextStyle(fontSize: 9)),
+                  ),
+                ),
+                SizedBox(height: 10),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
   }
+}
+
+InputDecoration _decoration(String hint) {
+  return InputDecoration(
+    hintText: hint,
+    hintStyle: TextStyle(fontSize: 8, color: Color(0xFFAAAAAA)),
+    contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+    isDense: true,
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(5),
+      borderSide: BorderSide(color: Color(0xFFD8D8D8)),
+    ),
+  );
 }

@@ -1,119 +1,71 @@
 import 'package:flutter/material.dart';
-import 'otp_ui.dart';
+import 'e02_page_ui.dart';
 
-class ForgotUI extends StatelessWidget {
-  ForgotUI({super.key});
+class E01PageUI extends StatelessWidget {
+  E01PageUI({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            SizedBox(height: 50.0),
-
-            Align(
-              alignment: Alignment.centerLeft,
-              child: OutlinedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Icon(
-                  Icons.arrow_back_ios_new_sharp,
-                  size: 20.0,
-                ),
-                style: OutlinedButton.styleFrom(
-                  fixedSize: Size(75.0, 65.0),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-              ),
-            ),
-
-            SizedBox(height: 30.0),
-
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: EdgeInsets.only(left: 30.0),
-                child: Text(
-                  'Forgot Password?',
-                  style: TextStyle(
-                    fontSize: 25.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-
-            SizedBox(height: 10.0),
-
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: EdgeInsets.only(left: 30.0),
-                child: Text(
-                  "Don't worry! Access please enter the email\n"
-                  "address linked with your account.",
-                  style: TextStyle(
-                    fontSize: 12.0,
-                    color: const Color.fromARGB(255, 255, 255, 255),
-                  ),
-                ),
-              ),
-            ),
-
-            SizedBox(height: 30.0),
-
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Enter your email',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                ),
-              ),
-            ),
-
-            SizedBox(height: 20.0),
-
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => OtpUi(),
-                  ),
-                );
-              },
-              child: Text(
-                'Send Code',
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            children: [
+              SizedBox(height: 35),
+              Text(
+                'BERRY JUICE',
                 style: TextStyle(
-                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF333333),
                 ),
               ),
-              style: ElevatedButton.styleFrom(
-                fixedSize: Size(350.0, 50.0),
-                backgroundColor: Colors.black,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5.0),
+              SizedBox(height: 8),
+              Text(
+                'A healthy and delicious drink\nfor your everyday life.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 10,
+                  color: Color(0xFF777777),
                 ),
               ),
-            ),
-
-            SizedBox(height: 150.0),
-
-            Text(
-              'Remember Password? Login',
-              style: TextStyle(
-                fontSize: 12.0,
-                color: Colors.grey,
+              SizedBox(height: 20),
+              Image.asset(
+                'assets/images/img_orange1.png',
+                width: 240,
+                height: 360,
+                fit: BoxFit.contain,
               ),
-            ),
-          ],
+              SizedBox(height: 5),
+              SizedBox(
+                width: 250,
+                height: 42,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => E02PageUI(),
+                      ),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFFFFA31A),
+                    foregroundColor: Colors.white,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                  ),
+                  child: Text(
+                    'Explore Now',
+                    style: TextStyle(fontSize: 10),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

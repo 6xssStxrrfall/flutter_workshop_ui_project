@@ -1,157 +1,101 @@
 import 'package:flutter/material.dart';
-import 'password_chang_ui.dart';
+import 'e05_page_ui.dart';
+import 'e02_page_ui.dart';
 
-class NewPasswordUI extends StatefulWidget {
-  NewPasswordUI({super.key});
-
-  @override
-  State<NewPasswordUI> createState() => _NewPasswordUIState();
-}
-
-class _NewPasswordUIState extends State<NewPasswordUI> {
-  bool hide1 = true;
-  bool hide2 = true;
+class E04PageUI extends StatelessWidget {
+  E04PageUI({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            SizedBox(height: 50.0),
-
-            Align(
-              alignment: Alignment.centerLeft,
-              child: OutlinedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Icon(
-                  Icons.arrow_back_ios_new_sharp,
-                  size: 20.0,
-                ),
-                style: OutlinedButton.styleFrom(
-                  fixedSize: Size(60.0, 50.0),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                width: double.infinity,
+                height: 155,
+                child: Image.asset(
+                  'assets/images/img_orange2.png',
+                  fit: BoxFit.cover,
+                  alignment: Alignment.topCenter,
                 ),
               ),
-            ),
-
-            SizedBox(height: 30.0),
-
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: EdgeInsets.only(left: 30.0),
-                child: Text(
-                  'Create new password',
-                  style: TextStyle(
-                    fontSize: 25.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-
-            SizedBox(height: 10.0),
-
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: EdgeInsets.only(left: 30.0),
-                child: Text(
-                  'Your new password must be unique from those\n'
-                  'previously used.',
-                  style: TextStyle(
-                    fontSize: 12.0,
-                    color: const Color.fromARGB(255, 247, 247, 247),
-                  ),
-                ),
-              ),
-            ),
-
-            SizedBox(height: 30.0),
-
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30.0),
-              child: TextField(
-                obscureText: hide1,
-                decoration: InputDecoration(
-                  hintText: 'New Password',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        hide1 = !hide1;
-                      });
-                    },
-                    icon: Icon(
-                      hide1
-                          ? Icons.visibility_off
-                          : Icons.visibility,
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 28),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 18),
+                    Text(
+                      'Forgot your password?',
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
-                  ),
-                ),
-              ),
-            ),
-
-            SizedBox(height: 15.0),
-
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30.0),
-              child: TextField(
-                obscureText: hide2,
-                decoration: InputDecoration(
-                  hintText: 'Confirm Password',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        hide2 = !hide2;
-                      });
-                    },
-                    icon: Icon(
-                      hide2
-                          ? Icons.visibility_off
-                          : Icons.visibility,
+                    SizedBox(height: 4),
+                    Text(
+                      'Enter your email to reset your password',
+                      style: TextStyle(fontSize: 9, color: Color(0xFF777777)),
                     ),
-                  ),
+                    SizedBox(height: 20),
+                    TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Enter your email',
+                        hintStyle: TextStyle(fontSize: 8, color: Color(0xFFAAAAAA)),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                        isDense: true,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5),
+                          borderSide: BorderSide(color: Color(0xFFD8D8D8)),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 12),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 40,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => E05PageUI(),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xFFFF9D00),
+                          foregroundColor: Colors.white,
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                        ),
+                        child: Text('Send Code', style: TextStyle(fontSize: 9)),
+                      ),
+                    ),
+                    SizedBox(height: 28),
+                    Center(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => E02PageUI(),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          'Remember your password? Login',
+                          style: TextStyle(fontSize: 8, color: Color(0xFF777777)),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ),
-
-            SizedBox(height: 20.0),
-
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => PasswordChangUI(),
-                  ),
-                );
-              },
-              child: Text(
-                'Reset Password',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-              style: ElevatedButton.styleFrom(
-                fixedSize: Size(350.0, 50.0),
-                backgroundColor: Colors.black,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
